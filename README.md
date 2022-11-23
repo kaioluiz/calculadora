@@ -1,3 +1,3 @@
 # Calculadora JavaScript
 
-# Projeto calculado com foco na linguagem JavaScript. 
+# Projeto calculadora com foco na linguagem JavaScript. 
