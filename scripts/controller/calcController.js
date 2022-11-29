@@ -25,11 +25,24 @@ class CalcController {
 
         // a partir de dois argumentos nos parâmetros do foreach é necessário coloca-los entre parenteses. 
         buttons.forEach((btn, index) => {
-            btn.addEventListener('click', event => {
+
+            this.addEventListenerAll(btn, 'click drag', event => {
                 //Comando baseVal se faz necessário por se tratar de svg
                 console.log(btn.className.baseVal.replace('btn-', ''));
             });
+
+            this.addEventListenerAll(btn, 'mouseover mouseup mousedown', event =>{
+                btn.style.cursor = "pointer";                
+            });
+
         });
+    }
+
+    addEventListenerAll(element, events, func){
+        events.split(' ').forEach(event =>{
+            //Terceiro parâmetro false, é para que a DOM não identifique mais de um clique no botão. Como o text e o botão são elementos separados no html deste projeto isso se faz necessário. 
+            element.addEventListener(event, func, false);
+        })
     }
 
 
