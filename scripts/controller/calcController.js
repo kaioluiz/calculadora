@@ -26,19 +26,21 @@ class CalcController {
         // a partir de dois argumentos nos parâmetros do foreach é necessário coloca-los entre parenteses. 
         buttons.forEach((btn, index) => {
 
-            this.addEventListenerAll(btn, 'click drag', event => {
+            this.addEventListenerAll(btn, 'click drag', func => {
                 //Comando baseVal se faz necessário por se tratar de svg
                 console.log(btn.className.baseVal.replace('btn-', ''));
             });
-
-            this.addEventListenerAll(btn, 'mouseover mouseup mousedown', event =>{
+            
+            this.addEventListenerAll(btn, 'mouseover mouseup mousedown', func =>{
                 btn.style.cursor = "pointer";                
             });
 
         });
     }
 
+    //Função criada para adicionar mais de um evento a um elemento HTML da DOM, no caso botões da calculadora.
     addEventListenerAll(element, events, func){
+        //A função split separa os elementos da string events por espaço entre eles e retorna um objeto com os itens tornando possível utilizar o forEach.
         events.split(' ').forEach(event =>{
             //Terceiro parâmetro false, é para que a DOM não identifique mais de um clique no botão. Como o text e o botão são elementos separados no html deste projeto isso se faz necessário. 
             element.addEventListener(event, func, false);
